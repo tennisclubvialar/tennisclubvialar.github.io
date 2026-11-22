@@ -1,0 +1,38 @@
+name: Scarica foto staff dal vecchio sito
+on:
+  push:
+    paths: ['.github/workflows/foto-staff.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  scarica:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scarica le foto
+        run: |
+          mkdir -p assets/staff
+          B=https://www.devialar.com/wp-content/uploads
+          dl(){ curl -fsSL --retry 3 -A "Mozilla/5.0" -o "assets/staff/$1.jpg" "$B/$2" || echo "manca $1"; }
+          dl francesca-dell-osa "2020/04/WhatsApp-Image-2026-01-18-at-13.37.35-570x696.jpeg"
+          dl fabio-meringolo "2020/04/9b4a8597-5db1-4ed1-ab89-520949ed617f-qj7vyce93dhf8m8zgcfgymh5akczp28qv7uss0gm9q-570x696.jpg"
+          dl federica-taborra "2026/03/fra-570x696.jpeg"
+          dl francesco-masserini "2025/10/WhatsApp-Image-2026-01-18-at-13.38.07-570x696.jpeg"
+          dl gianmarco-meringolo "2025/10/gian-570x696.jpg"
+          dl mario-paura "2026/03/WhatsApp-Image-2026-01-18-at-13.37.18-570x696.jpeg"
+          dl matteo-capuano "2026/03/WhatsApp-Image-2026-01-18-at-13.38.30-570x696.jpeg"
+          dl lorenzo-vincenti "2026/03/WhatsApp-Image-2026-01-18-at-13.38.58-570x696.jpeg"
+          dl jean-simonelli "2026/03/WhatsApp-Image-2026-01-18-at-13.39.19-570x696.jpeg"
+          dl francesca-sateanu "2026/03/WhatsApp-Image-2026-01-18-at-13.40.03-570x696.jpeg"
+          dl paolo-masala "2026/03/WhatsApp-Image-2026-01-18-at-13.40.43-570x696.jpeg"
+          dl gabriele-labbadia "2026/03/gab-570x696.jpeg"
+          dl lorenza-laviola "2026/04/WhatsApp-Image-2026-04-09-at-13.59.21-570x696.jpeg"
+          ls -la assets/staff
+      - name: Salva nel repository
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add assets/staff
+          git commit -m "Foto staff dal vecchio sito" || echo "niente da salvare"
+          git push
