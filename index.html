@@ -483,6 +483,42 @@ body::before{background:rgba(11,31,68,.9)}
 .trophy .win svg{flex:none}
 .trophy .det{font-size:14px;color:rgba(255,255,255,.75);display:flex;flex-direction:column;gap:3px}
 @media (max-width:900px){.trophies{grid-template-columns:1fr}}
+
+/* ===== palette finale: giorno = blu royal + bianco · sera (tema scuro) = nero con toni di blu ===== */
+:root{--sec:#005EB9;--sec-2:rgba(255,255,255,.13);--sec-line:rgba(255,255,255,.25);--acc:#005EB9;--acc-hi:#1E7BE0;--navbg:rgba(0,94,185,.94);--stepbg:#0A4A94;--trophy:linear-gradient(160deg,#005EB9,#0A4A94);--bg-2:#EEF5FD;--line:#DCE7F5;--ink:#0B1530;--ink-2:#4D5F80;--subbg:#FFFFFF;--subink:#4D5F80}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sec:#000000;--sec-2:#0D1B33;--sec-line:#1C2E52;--acc:#2F86E8;--acc-hi:#5AA2F0;--navbg:rgba(0,0,0,.86);--stepbg:#0D1B33;--trophy:linear-gradient(160deg,#0D1B33,#081226);--bg:#000000;--bg-2:#0B1426;--line:#1A2842;--ink:#F4F7FB;--ink-2:#A9B8D0;--glass:rgba(0,0,0,.8);--subbg:#05090F;--subink:#A9B8D0;color-scheme:dark}}
+:root[data-theme="dark"]{--sec:#000000;--sec-2:#0D1B33;--sec-line:#1C2E52;--acc:#2F86E8;--acc-hi:#5AA2F0;--navbg:rgba(0,0,0,.86);--stepbg:#0D1B33;--trophy:linear-gradient(160deg,#0D1B33,#081226);--bg:#000000;--bg-2:#0B1426;--line:#1A2842;--ink:#F4F7FB;--ink-2:#A9B8D0;--glass:rgba(0,0,0,.8);--subbg:#05090F;--subink:#A9B8D0;color-scheme:dark}
+.dark{background:var(--sec)!important}
+.nav,body::before{background:var(--navbg)!important}
+@media (max-width:960px){.nav.open ul{background:var(--sec)!important}}
+.nav .btn{background:#FFFFFF!important;color:var(--acc)!important}
+.dark .tile,.ch a.big,.pcard,.dark .time{background:var(--sec-2)!important}
+.ch a.big.wa{background:#FFFFFF!important;color:#0B1530!important}
+.ch a.big.wa-green{background:#25D366!important;color:#fff!important}
+.dark .facts,.dark .fact,.dark .stat,.hours div{border-color:var(--sec-line)!important}
+.step{background:var(--stepbg)!important}
+.time{background:var(--stepbg)!important;color:#fff!important}.time span{color:rgba(255,255,255,.8)!important}
+#scuola .arrows button{background:var(--bg-2)!important;color:var(--ink)!important}
+.btn{background:var(--acc)!important;color:#fff!important}.btn:hover{background:var(--acc-hi)!important}
+.dark .btn{background:#FFFFFF!important;color:#0B1530!important}
+.hero h1 em{color:var(--acc)!important}
+.eyebrow{color:var(--acc)}
+.dark .eyebrow{color:rgba(255,255,255,.85)!important}
+.link{color:var(--acc)}
+.subnav{background:var(--subbg)!important;border-color:var(--line)!important}
+.subnav a{color:var(--subink)!important}.subnav a.on{background:var(--acc)!important;color:#fff!important}
+.person .av,.cal li.next .s{background:var(--acc)!important}
+.filters button[aria-pressed="true"],.ctabs button[aria-selected="true"]{background:var(--acc)!important;border-color:var(--acc)!important;color:#fff!important}
+.related a:hover{background:var(--acc)!important;color:#fff!important}
+.dark .related a{background:#FFFFFF!important;color:#0B1530!important}
+.trophy{background:var(--trophy)!important}
+.tile .k{color:var(--acc)}
+.dark .tile .k{color:rgba(255,255,255,.85)}
+.stat b.blue{color:var(--acc)}
+.dark .stat b.blue,.dark .stat b{color:#FFFFFF}
+.dark .person{background:#FFFFFF}
+.ptabs button[aria-selected="true"]{color:var(--acc)}
+.lb{background:rgba(0,0,0,.94)}
 </style>
 </head>
 <body>
