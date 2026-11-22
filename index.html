@@ -584,6 +584,14 @@ body::before{background:rgba(11,31,68,.9)}
 .av-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:4px}
 .av-cols h4{font-family:var(--display);font-size:17px;font-weight:600;margin:0 0 6px}
 @media (max-width:760px){.av-cols{grid-template-columns:1fr}}
+
+.person.haspic{padding:0;overflow:hidden}
+.person.haspic .pic{width:100%;aspect-ratio:4/5;object-fit:cover}
+.person.haspic>*:not(.pic){margin-left:22px;margin-right:22px}
+.person.haspic>*:last-child{margin-bottom:22px}
+.ps{padding:0;overflow:hidden}
+.ps .pic{width:100%;aspect-ratio:4/5;object-fit:cover;margin-bottom:8px}
+.ps b,.ps span{padding:0 18px}.ps span{padding-bottom:18px}
 </style>
 </head>
 <body>
@@ -676,10 +684,10 @@ body::before{background:rgba(11,31,68,.9)}
     <div class="pstaff rise">
       <h3 class="h3x" style="color:#fff">Lo staff Performance</h3>
       <div class="ps-grid">
-        <div class="ps"><div class="av">LV</div><b>Lorenzo Vincente</b><span>Maestro Nazionale FITP · Preparatore fisico di 2° grado</span></div>
-        <div class="ps"><div class="av">FM</div><b>Fabio Meringolo</b><span>Maestro Nazionale FITP</span></div>
-        <div class="ps"><div class="av">MP</div><b>Mario Paura</b><span>Preparatore atletico · Laurea triennale e magistrale in Scienze Motorie</span></div>
-        <div class="ps"><div class="av">GM</div><b>Gianmarco Meringolo</b><span>Preparatore atletico · Laureato in Scienze Motorie · Invictus Trainer · Preparatore fisico di 2° grado FITP</span></div>
+        <div class="ps"><img class="pic" loading="lazy" src="assets/staff/lorenzo-vincenti.jpg" alt="Lorenzo Vincenti"><b>Lorenzo Vincenti</b><span>Maestro Nazionale FITP · Preparatore fisico di 2° grado</span></div>
+        <div class="ps"><img class="pic" loading="lazy" src="assets/staff/fabio-meringolo.jpg" alt="Fabio Meringolo"><b>Fabio Meringolo</b><span>Maestro Nazionale FITP</span></div>
+        <div class="ps"><img class="pic" loading="lazy" src="assets/staff/mario-paura.jpg" alt="Mario Paura"><b>Mario Paura</b><span>Preparatore atletico · Laurea triennale e magistrale in Scienze Motorie</span></div>
+        <div class="ps"><img class="pic" loading="lazy" src="assets/staff/gianmarco-meringolo.jpg" alt="Gianmarco Meringolo"><b>Gianmarco Meringolo</b><span>Preparatore atletico · Laureato in Scienze Motorie · Invictus Trainer · Preparatore fisico di 2° grado FITP</span></div>
       </div>
     </div>
     <div class="pgrid">
@@ -967,12 +975,12 @@ document.querySelectorAll('[data-rel]').forEach(box=>{const k=box.dataset.rel,r=
 
 /* ---------- cosa cerchi? ---------- */
 const PATHS=[
- ['scuola','Per i più piccoli','Mio figlio vuole giocare a tennis','<video src="assets/video/minitennis.mp4" poster="assets/video/minitennis.jpg" muted loop playsinline preload="none"></video>'],
- ['adulti','Per chi inizia o ricomincia','Voglio imparare a giocare','<img src="assets/video/allenamento-avanzato.jpg" alt="" loading="lazy">'],
- ['servizi','Per i soci','Cerco con chi giocare','<img src="assets/foto/premiazione-1.jpg" alt="" loading="lazy">'],
+ ['scuola','Per i più piccoli','Mio figlio vuole giocare a tennis','<video src="assets/video/scuola-palleggio.mp4" poster="assets/video/scuola-palleggio.jpg" muted loop playsinline preload="none"></video>'],
+ ['adulti','Per chi inizia o ricomincia','Voglio imparare a giocare','<img src="assets/foto/adulti-campo.jpg" alt="" loading="lazy">'],
+ ['servizi','Per i soci','Cerco con chi giocare','<img src="assets/foto/gruppo-campo.jpg" alt="" loading="lazy">'],
  ['tornei','Per i soci','Voglio fare tornei al circolo','<img src="assets/video/torneo-sociale-reel.jpg" alt="" loading="lazy">'],
  ['atletica','Per stare bene','Voglio rimettermi in forma','<video src="assets/video/atletica-rapidita.mp4" poster="assets/video/atletica-rapidita.jpg" muted loop playsinline preload="none"></video>'],
- ['performance','Per atleti','Voglio allenarmi da atleta','<img src="assets/foto/squadra-agonisti.jpg" alt="" loading="lazy">']];
+ ['performance','Per atleti','Voglio allenarmi da atleta','<video src="assets/video/agonista-colpi.mp4" poster="assets/video/agonista-colpi.jpg" muted loop playsinline preload="none"></video>']];
 $('paths').innerHTML=PATHS.map(([id,k,t,m])=>'<a class="path rise" href="#'+id+'">'+m+'<span class="go">'+ARROW+'</span><small>'+k+'</small><b>'+t+'</b></a>').join('');
 document.querySelectorAll('.path').forEach(a=>{const v=a.querySelector('video');if(!v||reduce)return;a.addEventListener('mouseenter',()=>v.play().catch(()=>{}));a.addEventListener('mouseleave',()=>v.pause())});
 
@@ -1002,7 +1010,7 @@ const sc=trova('scuola tennis','crescere');
 if(sc){set('scuolaTitolo',sc.titolo);set('scuolaTesto',sc.testo);$('scuolaOrari').innerHTML=(sc.fatti||[]).map(f=>'<div class="time"><b>'+esc(f.value||f.label)+'</b><span>'+esc(f.value?f.label:(f.note||''))+'</span></div>').join('')}
 const livelli=(sc&&sc.chips)||['Avviamento','Pre-perfezionamento','Perfezionamento','Specializzazione'];
 const descr={'avviamento':'Coordinazione, equilibrio e i primi colpi: il tennis dei più piccoli è movimento e divertimento.','pre-perfezionamento':'Si consolidano i colpi e si comincia a costruire il punto.','perfezionamento':'Per chi ha basi solide e vuole un tennis più competitivo.','specializzazione':'Tecnica, tattica e preparazione atletica per i giocatori avanzati.'};
-const media={'avviamento':'<video src="assets/video/minitennis.mp4" poster="assets/video/minitennis.jpg" muted loop playsinline preload="none"></video>','pre-perfezionamento':'<video src="assets/video/scuola-dritto.mp4" poster="assets/video/scuola-dritto.jpg" muted loop playsinline preload="none"></video>','perfezionamento':'<video src="assets/video/scuola-palleggio.mp4" poster="assets/video/scuola-palleggio.jpg" muted loop playsinline preload="none"></video>','specializzazione':'<video src="assets/video/agonista-colpi.mp4" poster="assets/video/agonista-colpi.jpg" muted loop playsinline preload="none"></video>'};
+const media={'avviamento':'<video src="assets/video/minitennis.mp4" poster="assets/video/minitennis.jpg" muted loop playsinline preload="none"></video>','pre-perfezionamento':'<video src="assets/video/scuola-dritto.mp4" poster="assets/video/scuola-dritto.jpg" muted loop playsinline preload="none"></video>','perfezionamento':'<video src="assets/video/lezione-tecnica.mp4" poster="assets/video/lezione-tecnica.jpg" muted loop playsinline preload="none"></video>','specializzazione':'<video src="assets/video/agonista-colpi.mp4" poster="assets/video/agonista-colpi.jpg" muted loop playsinline preload="none"></video>'};
 $('track').innerHTML=livelli.map((l,i)=>{const k=low(l);return '<article class="step media"><span class="n">0'+(i+1)+'</span>'+(media[k]||'')+'<h3>'+esc(l)+'</h3><p>'+esc(descr[k]||'')+'</p></article>'}).join('')+'<a class="step blue" href="#agonistica" style="text-decoration:none;color:#fff"><span class="n">0'+(livelli.length+1)+'</span><h3>Agonistica ›</h3><p>Cinque allenamenti a settimana, tornei FITP e una preparazione completa.</p></a>';
 const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting&&!reduce)v.play().catch(()=>{});else v.pause()}),{threshold:.4});
 document.querySelectorAll('.step video').forEach(v=>vio.observe(v));
@@ -1049,13 +1057,14 @@ function drawWall(){const list=MEDIA.filter(m=>filtro==='Tutto'||(filtro==='Vide
 $('filters').innerHTML=CATS.map(c=>'<button aria-pressed="false">'+esc(c)+'</button>').join('');
 [...$('filters').children].forEach(b=>b.onclick=()=>{filtro=b.textContent;drawWall()});drawWall();
 
+const FOTO=new Set(["fabio-meringolo", "federica-taborra", "francesca-dell-osa", "francesca-sateanu", "francesco-masserini", "gabriele-labbadia", "gianmarco-meringolo", "jean-simonelli", "lorenza-laviola", "lorenzo-vincenti", "mario-paura", "matteo-capuano", "paolo-masala"]);const slug=n=>n.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z]+/g,'-').replace(/^-|-$/g,'');const foto=n=>FOTO.has(slug(n))?'assets/staff/'+slug(n)+'.jpg':null;
 /* ---------- staff ---------- */
 const gruppi=[];S.filter(s=>s.tipo==='staff').forEach(s=>s.gruppi.forEach(g=>gruppi.push({settore:g.settore,membri:g.membri})));
 const sett=[['Direzione e segreteria',g=>/direzione|segreteria/i.test(g.settore)],['Scuola tennis',g=>/avviamento|perfezionamento|specializzazione/i.test(g.settore)],['Preparazione atletica e benessere',g=>/atletica/i.test(g.settore)]];
 const extra=trova('il nostro staff','team');
 function drawStaff(i){const list=[];gruppi.filter(sett[i][1]).forEach(g=>g.membri.forEach(m=>list.push(Object.assign({settore:g.settore},m))));
   if(i===2&&extra)extra.fatti.forEach(f=>{if(!/visita/i.test(f.label))list.push({nome:f.label,ruolo:f.note,settore:'Benessere'})});
-  $('rstaff').innerHTML=list.map(m=>'<article class="person"><div class="av">'+esc(m.nome.split(' ').map(x=>x[0]).slice(0,2).join(''))+'</div>'+(m.tag?'<span class="tag">'+esc(m.tag)+'</span>':'')+'<h3>'+esc(m.nome)+'</h3><p class="set">'+esc(m.settore)+(m.resp&&!m.tag?' · Responsabile':'')+'</p><p>'+esc(m.ruolo)+'</p></article>').join('');$('rstaff').scrollLeft=0;
+  $('rstaff').innerHTML=list.map(m=>'<article class="person'+(foto(m.nome)?' haspic':'')+'">'+(foto(m.nome)?'<img class="pic" loading="lazy" src="'+foto(m.nome)+'" alt="'+esc(m.nome)+'">':'<div class="av">'+esc(m.nome.split(' ').map(x=>x[0]).slice(0,2).join(''))+'</div>')+(m.tag?'<span class="tag">'+esc(m.tag)+'</span>':'')+'<h3>'+esc(m.nome)+'</h3><p class="set">'+esc(m.settore)+(m.resp&&!m.tag?' · Responsabile':'')+'</p><p>'+esc(m.ruolo)+'</p></article>').join('');$('rstaff').scrollLeft=0;
   [...$('tabs').children].forEach((b,j)=>b.setAttribute('aria-selected',j===i))}
 $('tabs').innerHTML=sett.map(s=>'<button role="tab">'+s[0]+'</button>').join('');
 [...$('tabs').children].forEach((b,i)=>b.onclick=()=>drawStaff(i));drawStaff(1);
