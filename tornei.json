@@ -1,0 +1,72 @@
+{
+ "rodei": [
+  {
+   "nome": "Vialar Open",
+   "data": "2026-09-27",
+   "partecipanti": 15,
+   "vincitore": "Sanacore F.",
+   "finalista": "Raggio S.",
+   "punteggio": "6-4",
+   "consolazione": "Vecchione M.",
+   "tipo": "Open"
+  },
+  {
+   "nome": "Ladies Cup",
+   "data": "2026-10-11",
+   "partecipanti": 9,
+   "vincitore": "Salvatori L.",
+   "finalista": "Maresca E.",
+   "punteggio": "6-0",
+   "consolazione": "Zigrossi A.",
+   "tipo": "Femminile"
+  },
+  {
+   "nome": "Gentlemen's Cup",
+   "data": "2026-11-15",
+   "partecipanti": 16,
+   "vincitore": "Monteverde L.",
+   "finalista": "De Sanctis V.",
+   "punteggio": "6-0",
+   "consolazione": "D'Andrea S.",
+   "tipo": "Open"
+  }
+ ],
+ "scuola": [
+  {
+   "nome": "Orange Cup · Rodeo A 16",
+   "data": "2026-09-27",
+   "partecipanti": 13,
+   "categoria": "Under 10"
+  },
+  {
+   "nome": "Green Cup",
+   "data": "2026-10-10",
+   "partecipanti": 20,
+   "categoria": "Under 12"
+  },
+  {
+   "nome": "Autumn Tennis Party",
+   "data": "2026-10-17",
+   "partecipanti": 20,
+   "categoria": "Under 18"
+  },
+  {
+   "nome": "All-Round Cup",
+   "data": "2026-10-18",
+   "partecipanti": 11,
+   "categoria": "Under 10"
+  },
+  {
+   "nome": "Scrocchia Tutto",
+   "data": "2026-10-24",
+   "partecipanti": 10,
+   "categoria": "Tutte le età"
+  },
+  {
+   "nome": "Us Open",
+   "data": "2026-10-25",
+   "partecipanti": 17,
+   "categoria": "Tutte le età"
+  }
+ ]
+}
