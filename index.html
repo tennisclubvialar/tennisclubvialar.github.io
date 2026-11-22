@@ -580,6 +580,10 @@ body::before{background:rgba(11,31,68,.9)}
 .ps span{color:#4D5F80;font-size:14px;line-height:1.45}
 @media (max-width:960px){.ps-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.ps-grid{grid-template-columns:1fr}}
+
+.av-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:4px}
+.av-cols h4{font-family:var(--display);font-size:17px;font-weight:600;margin:0 0 6px}
+@media (max-width:760px){.av-cols{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -1014,7 +1018,9 @@ $('perfTiles').innerHTML=[campione,trova('perfezionamento e agonistica','cinque'
 
 /* ---------- adulti, atletica ---------- */
 const ad=trova('corsi adulti');if(ad){set('adultiTitolo',ad.titolo);set('adultiTesto',ad.testo)}
-$('adultiTiles').innerHTML=[ad&&Object.assign({},ad,{testo:'Due sere a settimana, tutto il trimestre.'}),trova('allenamento avanzato ·'),trova('allenamento avanzato','spendi')].filter(Boolean).map(s=>tile(s)).join('');
+const avO=trova('allenamento avanzato ·'),avP=trova('allenamento avanzato','spendi');
+$('adultiTiles').innerHTML=(ad?tile(Object.assign({},ad,{testo:'Due sere a settimana, tutto il trimestre.'})):'')
+ +(avO?'<div class="tile rise span2 av-tile"><p class="k">'+esc(avO.kicker)+'</p><h3>Allenamento avanzato</h3><p>'+esc(avO.testo)+'</p><div class="av-cols"><div><h4>Quando</h4><div class="facts">'+factsHTML(avO.fatti)+'</div></div>'+(avP?'<div><h4>Costi</h4><div class="facts">'+factsHTML(avP.fatti)+'</div><p style="font-size:14px;margin-top:10px">'+esc(avP.testo)+'</p></div>':'')+'</div><a class="btn" style="align-self:flex-start" href="'+WA('Ciao, vorrei informazioni sull\'allenamento avanzato')+'" target="_blank" rel="noopener">Prenota un allenamento</a></div>':'');
 const at=trova('preparazione atletica','forte');if(at){set('atlTitolo',at.titolo);set('atlTesto',at.testo)}
 $('atlTiles').innerHTML=[trova('scegli il tuo obiettivo'),trova('inizia ora'),trova('area fitness')].filter(Boolean).map(s=>tile(s)).join('');
 
