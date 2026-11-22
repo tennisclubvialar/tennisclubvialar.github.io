@@ -558,6 +558,19 @@ body::before{background:rgba(11,31,68,.9)}
 .fz.wide .chips{margin:6px 0}
 @media (max-width:860px){.fz-grid{grid-template-columns:1fr 1fr}.fz.wide{grid-column:1/-1}}
 @media (max-width:520px){.fz-grid{grid-template-columns:1fr}}
+
+.fz-grid{grid-template-columns:1fr 1fr 1fr 1.4fr}
+.fz .facts{border-color:var(--line)}.fz .fact{padding:8px 0}.fz .fact h3{font-size:15px}.fz .fact .v{font-size:20px}.fz .fact small{font-size:12px}
+@media (max-width:1000px){.fz-grid{grid-template-columns:1fr 1fr}}
+.team h4{font-family:var(--display);font-size:20px;font-weight:600;margin:0 0 12px}
+.team-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tm{background:var(--bg);border-radius:18px;padding:16px;display:flex;gap:14px;align-items:center}
+.tm .av{width:48px;height:48px;flex:none;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700}
+.tm b{display:block;font-size:16px}.tm span{display:block;color:var(--acc);font-weight:600;font-size:14px}.tm small{color:var(--ink-2);font-size:13px}
+@media (max-width:760px){.team-row{grid-template-columns:1fr}}
+.gare{position:relative;overflow:hidden;isolation:isolate}
+.gare-bg{position:absolute;inset:0 0 auto 0;width:100%;height:70%;object-fit:cover;object-position:50% 30%;z-index:-2;opacity:.7}
+.gare::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--sec) 45%,transparent) 0%,var(--sec) 62%)}
 </style>
 </head>
 <body>
@@ -614,8 +627,13 @@ body::before{background:rgba(11,31,68,.9)}
       <div class="fz-grid">
         <div class="fz"><span class="fz-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span><h4>Fitness all’aperto</h4><p>Allenamento all’aria aperta, accanto ai campi.</p></div>
         <div class="fz"><span class="fz-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg></span><h4>Palestra al chiuso</h4><p>Attrezzata per lavorare in ogni stagione.</p></div>
+        <div class="fz"><h4>Abbonamenti palestra</h4><div class="facts" id="gymPrezzi"></div></div>
         <div class="fz wide"><h4>Cosa puoi chiedere</h4><div class="chips"><span>Riabilitazione</span><span>Rinforzo muscolare</span><span>Prevenzione infortuni</span><span>Mobilità</span><span>Performance</span></div>
         <a class="link" href="#atletica">Scopri la preparazione atletica ›</a></div>
+      </div>
+      <div class="team">
+        <h4>Nel circolo lavorano anche</h4>
+        <div class="team-row" id="teamRow"></div>
       </div>
     </div>
     <div class="split">
@@ -695,6 +713,7 @@ body::before{background:rgba(11,31,68,.9)}
   <div class="rail" id="track"></div>
   <div class="in" id="gare">
     <div class="gare rise">
+      <video class="gare-bg" src="assets/video/gara-ragazzo.mp4" poster="assets/video/gara-ragazzo.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
       <p class="eyebrow" style="color:rgba(255,255,255,.85)">Le prime gare</p>
       <h3 class="h3x" style="color:#fff">Dal circolo ai tornei federali.</h3>
       <p class="gl">I ragazzi della scuola tennis iniziano a competere prima tra loro, al circolo, e poi passo dopo passo fuori.</p>
@@ -961,7 +980,7 @@ const sc=trova('scuola tennis','crescere');
 if(sc){set('scuolaTitolo',sc.titolo);set('scuolaTesto',sc.testo);$('scuolaOrari').innerHTML=(sc.fatti||[]).map(f=>'<div class="time"><b>'+esc(f.value||f.label)+'</b><span>'+esc(f.value?f.label:(f.note||''))+'</span></div>').join('')}
 const livelli=(sc&&sc.chips)||['Avviamento','Pre-perfezionamento','Perfezionamento','Specializzazione'];
 const descr={'avviamento':'Coordinazione, equilibrio e i primi colpi: il tennis dei più piccoli è movimento e divertimento.','pre-perfezionamento':'Si consolidano i colpi e si comincia a costruire il punto.','perfezionamento':'Per chi ha basi solide e vuole un tennis più competitivo.','specializzazione':'Tecnica, tattica e preparazione atletica per i giocatori avanzati.'};
-const media={'avviamento':'<video src="assets/video/minitennis.mp4" poster="assets/video/minitennis.jpg" muted loop playsinline preload="none"></video>','pre-perfezionamento':'<img src="assets/foto/scuola-tennis-gruppo.jpg" alt="" loading="lazy">','perfezionamento':'<video src="assets/video/lezione-tecnica.mp4" poster="assets/video/lezione-tecnica.jpg" muted loop playsinline preload="none"></video>','specializzazione':'<video src="assets/video/agonista-colpi.mp4" poster="assets/video/agonista-colpi.jpg" muted loop playsinline preload="none"></video>'};
+const media={'avviamento':'<video src="assets/video/minitennis.mp4" poster="assets/video/minitennis.jpg" muted loop playsinline preload="none"></video>','pre-perfezionamento':'<video src="assets/video/scuola-dritto.mp4" poster="assets/video/scuola-dritto.jpg" muted loop playsinline preload="none"></video>','perfezionamento':'<video src="assets/video/scuola-palleggio.mp4" poster="assets/video/scuola-palleggio.jpg" muted loop playsinline preload="none"></video>','specializzazione':'<video src="assets/video/agonista-colpi.mp4" poster="assets/video/agonista-colpi.jpg" muted loop playsinline preload="none"></video>'};
 $('track').innerHTML=livelli.map((l,i)=>{const k=low(l);return '<article class="step media"><span class="n">0'+(i+1)+'</span>'+(media[k]||'')+'<h3>'+esc(l)+'</h3><p>'+esc(descr[k]||'')+'</p></article>'}).join('')+'<a class="step blue" href="#agonistica" style="text-decoration:none;color:#fff"><span class="n">0'+(livelli.length+1)+'</span><h3>Agonistica ›</h3><p>Cinque allenamenti a settimana, tornei FITP e una preparazione completa.</p></a>';
 const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting&&!reduce)v.play().catch(()=>{});else v.pause()}),{threshold:.4});
 document.querySelectorAll('.step video').forEach(v=>vio.observe(v));
@@ -1068,6 +1087,11 @@ const pio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting||pAni
   let k=0;const t=setInterval(()=>{ph.forEach((p,i)=>p.classList.toggle('on',i===k%ph.length));k++},900);
   ds.forEach((d,i)=>setTimeout(()=>d.classList.add('on'),200+i*160))}),{threshold:.25});
 pio.observe($('performance'));drawPerf();
+
+/* ---------- palestra e team salute (dati della bacheca) ---------- */
+const fit=trova('area fitness');if(fit)$('gymPrezzi').innerHTML=factsHTML(fit.fatti);
+const tm=trova('il nostro staff','team');
+if(tm)$('teamRow').innerHTML=tm.fatti.filter(f=>!/visita/i.test(f.label)).map(f=>{const r=(f.note||'').split('·');return '<div class="tm"><div class="av">'+esc(f.label.split(' ').map(x=>x[0]).join(''))+'</div><div><b>'+esc(f.label)+'</b><span>'+esc(r[0].trim())+'</span>'+(r[1]?'<small>'+esc(r[1].trim())+'</small>':'')+'</div></div>'}).join('');
 /* ---------- frecce caroselli ---------- */
 document.querySelectorAll('[data-rail]').forEach(b=>b.onclick=()=>{const r=$(b.dataset.rail),c=r.firstElementChild;r.scrollBy({left:(c?c.offsetWidth+18:300)*b.dataset.dir,behavior:reduce?'auto':'smooth'})});
 
