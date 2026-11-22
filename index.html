@@ -592,6 +592,20 @@ body::before{background:rgba(11,31,68,.9)}
 .ps{padding:0;overflow:hidden}
 .ps .pic{width:100%;aspect-ratio:4/5;object-fit:cover;margin-bottom:8px}
 .ps b,.ps span{padding:0 18px}.ps span{padding-bottom:18px}
+
+.mrow-wrap{margin-top:36px}
+.mrow-t{font-family:var(--display);font-size:24px;font-weight:600;margin:0 0 14px;letter-spacing:-.01em}
+.dark .mrow-t{color:#fff}
+.mrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mrow.two{grid-template-columns:repeat(2,1fr)}
+.mrow.four{grid-template-columns:repeat(4,1fr)}
+.mt{margin:0;position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:#000;cursor:zoom-in}
+.mrow.two .mt{aspect-ratio:4/3}.mrow.two .mt video{object-position:50% 30%}
+.mt img,.mt video{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.mt:hover img,.mt:hover video{transform:scale(1.04)}
+.mt figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;color:#fff;font-weight:600;font-size:15px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.7))}
+@media (max-width:860px){.mrow,.mrow.four{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.mrow,.mrow.two{grid-template-columns:1fr}.mrow.four{grid-template-columns:1fr 1fr}.mt{aspect-ratio:4/4.4}}
 </style>
 </head>
 <body>
@@ -690,6 +704,7 @@ body::before{background:rgba(11,31,68,.9)}
         <div class="ps"><img class="pic" loading="lazy" src="assets/staff/gianmarco-meringolo.jpg" alt="Gianmarco Meringolo"><b>Gianmarco Meringolo</b><span>Preparatore atletico · Laureato in Scienze Motorie · Invictus Trainer · Preparatore fisico di 2° grado FITP</span></div>
       </div>
     </div>
+    <div class="mrow-wrap rise"><h3 class="mrow-t">In allenamento</h3><div class="mrow two"><figure class="mt"><video src="assets/video/palestra-preparatore.mp4" poster="assets/video/palestra-preparatore.jpg" muted loop playsinline preload="none"></video><figcaption>Preparazione atletica individuale</figcaption></figure><figure class="mt"><video src="assets/video/agonista-servizio.mp4" poster="assets/video/agonista-servizio.jpg" muted loop playsinline preload="none"></video><figcaption>Servizio e situazioni di gioco</figcaption></figure></div></div>
     <div class="pgrid">
       <div class="pcard rise wide">
         <div class="ph"><span>Videoanalisi del colpo</span><small>esempio</small></div>
@@ -755,6 +770,9 @@ body::before{background:rgba(11,31,68,.9)}
       <div class="cal cal1" id="calScuola"></div>
     </div>
   </div>
+  <div class="in">
+    <div class="mrow-wrap rise"><h3 class="mrow-t">Fuori dal circolo</h3><div class="mrow four"><figure class="mt"><video src="assets/video/trasferta-campi.mp4" poster="assets/video/trasferta-campi.jpg" muted loop playsinline preload="none"></video><figcaption>In trasferta per le gare</figcaption></figure><figure class="mt"><img src="assets/foto/foro-italico-gruppo.jpg" alt="Tutti insieme al Foro Italico" loading="lazy"><figcaption>Tutti insieme al Foro Italico</figcaption></figure><figure class="mt"><img src="assets/foto/foro-italico-3.jpg" alt="Con i più piccoli al Foro Italico" loading="lazy"><figcaption>Con i più piccoli al Foro Italico</figcaption></figure><figure class="mt"><img src="assets/foto/foro-italico-2.jpg" alt="Incontri speciali al Foro Italico" loading="lazy"><figcaption>Incontri speciali al Foro Italico</figcaption></figure></div></div>
+  </div>
   <div class="in"><div data-rel="scuola"></div></div>
 </section>
 
@@ -763,6 +781,7 @@ body::before{background:rgba(11,31,68,.9)}
     <p class="eyebrow rise">Adulti</p>
     <h2 class="h2 rise" id="adultiTitolo">Mai troppo tardi per iniziare.</h2>
     <p class="lead rise" style="margin-top:18px" id="adultiTesto"></p>
+    <div class="mrow-wrap rise"><div class="mrow "><figure class="mt"><img src="assets/foto/adulto-campo.jpg" alt="Si gioca a ogni età" loading="lazy"><figcaption>Si gioca a ogni età</figcaption></figure><figure class="mt"><video src="assets/video/adulti-servizio.mp4" poster="assets/video/adulti-servizio.jpg" muted loop playsinline preload="none"></video><figcaption>Lavoro sul servizio</figcaption></figure><figure class="mt"><img src="assets/foto/premiazione-sociale-2.jpg" alt="Le premiazioni del circolo" loading="lazy"><figcaption>Le premiazioni del circolo</figcaption></figure></div></div>
     <div class="tiles" id="adultiTiles"></div>
     <div data-rel="adulti"></div>
   </div>
@@ -787,6 +806,7 @@ body::before{background:rgba(11,31,68,.9)}
     <p class="eyebrow rise">Preparazione atletica e benessere</p>
     <h2 class="h2 rise" id="atlTitolo">Più forte. Più veloce. Senza dolore.</h2>
     <p class="lead rise" style="margin-top:18px" id="atlTesto"></p>
+    <div class="mrow-wrap rise"><div class="mrow two"><figure class="mt"><video src="assets/video/palestra-palla.mp4" poster="assets/video/palestra-palla.jpg" muted loop playsinline preload="none"></video><figcaption>In palestra, con la palla medica</figcaption></figure><figure class="mt"><video src="assets/video/palestra-lanci.mp4" poster="assets/video/palestra-lanci.jpg" muted loop playsinline preload="none"></video><figcaption>Forza e coordinazione</figcaption></figure></div></div>
     <div class="tiles" id="atlTiles"></div>
     <div data-rel="atletica"></div>
   </div>
@@ -803,6 +823,7 @@ body::before{background:rgba(11,31,68,.9)}
       <div class="podium" id="podium"></div>
       <ol class="ranks" id="ranks"></ol>
     </div>
+    <div class="mrow-wrap rise"><h3 class="mrow-t">Le premiazioni</h3><div class="mrow four"><figure class="mt"><img src="assets/foto/premiazione-sociale-1.jpg" alt="Premiazione" loading="lazy"><figcaption>Premiazione</figcaption></figure><figure class="mt"><img src="assets/foto/premiazione-sociale-3.jpg" alt="I vincitori" loading="lazy"><figcaption>I vincitori</figcaption></figure><figure class="mt"><img src="assets/foto/premiazione-sociale-4.jpg" alt="Sul podio" loading="lazy"><figcaption>Sul podio</figcaption></figure><figure class="mt"><img src="assets/foto/premiazione-sociale-2.jpg" alt="Coppe e sorrisi" loading="lazy"><figcaption>Coppe e sorrisi</figcaption></figure></div></div>
     <div class="albo rise">
       <h3 class="h3x">Albo d’oro della stagione</h3>
       <p class="src">I rodei del circolo già giocati: ogni partita vale punti per la Race to Finals.</p>
@@ -976,10 +997,10 @@ document.querySelectorAll('[data-rel]').forEach(box=>{const k=box.dataset.rel,r=
 /* ---------- cosa cerchi? ---------- */
 const PATHS=[
  ['scuola','Per i più piccoli','Mio figlio vuole giocare a tennis','<video src="assets/video/scuola-palleggio.mp4" poster="assets/video/scuola-palleggio.jpg" muted loop playsinline preload="none"></video>'],
- ['adulti','Per chi inizia o ricomincia','Voglio imparare a giocare','<img src="assets/foto/adulti-campo.jpg" alt="" loading="lazy">'],
+ ['adulti','Per chi inizia o ricomincia','Voglio imparare a giocare','<img src="assets/foto/adulto-campo.jpg" alt="" loading="lazy">'],
  ['servizi','Per i soci','Cerco con chi giocare','<img src="assets/foto/gruppo-campo.jpg" alt="" loading="lazy">'],
- ['tornei','Per i soci','Voglio fare tornei al circolo','<img src="assets/video/torneo-sociale-reel.jpg" alt="" loading="lazy">'],
- ['atletica','Per stare bene','Voglio rimettermi in forma','<video src="assets/video/atletica-rapidita.mp4" poster="assets/video/atletica-rapidita.jpg" muted loop playsinline preload="none"></video>'],
+ ['tornei','Per i soci','Voglio fare tornei al circolo','<img src="assets/foto/premiazione-sociale-3.jpg" alt="" loading="lazy">'],
+ ['atletica','Per stare bene','Voglio rimettermi in forma','<video src="assets/video/palestra-lanci.mp4" poster="assets/video/palestra-lanci.jpg" muted loop playsinline preload="none"></video>'],
  ['performance','Per atleti','Voglio allenarmi da atleta','<video src="assets/video/agonista-colpi.mp4" poster="assets/video/agonista-colpi.jpg" muted loop playsinline preload="none"></video>']];
 $('paths').innerHTML=PATHS.map(([id,k,t,m])=>'<a class="path rise" href="#'+id+'">'+m+'<span class="go">'+ARROW+'</span><small>'+k+'</small><b>'+t+'</b></a>').join('');
 document.querySelectorAll('.path').forEach(a=>{const v=a.querySelector('video');if(!v||reduce)return;a.addEventListener('mouseenter',()=>v.play().catch(()=>{}));a.addEventListener('mouseleave',()=>v.pause())});
@@ -1125,6 +1146,11 @@ pio.observe($('performance'));drawPerf();
 const fit=trova('area fitness');if(fit)$('gymPrezzi').innerHTML=factsHTML(fit.fatti);
 const tm=trova('il nostro staff','team');
 if(tm)$('teamRow').innerHTML=tm.fatti.filter(f=>!/visita/i.test(f.label)).map(f=>{const r=(f.note||'').split('·');return '<div class="tm"><div class="av">'+esc(f.label.split(' ').map(x=>x[0]).join(''))+'</div><div><b>'+esc(f.label)+'</b><span>'+esc(r[0].trim())+'</span>'+(r[1]?'<small>'+esc(r[1].trim())+'</small>':'')+'</div></div>'}).join('');
+
+/* ---------- righe di foto e video ---------- */
+document.querySelectorAll('.mrow video').forEach(v=>vio.observe(v));
+document.querySelectorAll('.mrow').forEach((r,ri)=>{const items=[...r.querySelectorAll('.mt')].map(f=>{const v=f.querySelector('video'),i=f.querySelector('img');return v?{tipo:'video',src:v.getAttribute('src'),thumb:v.getAttribute('poster'),titolo:f.textContent}:{tipo:'img',src:i.getAttribute('src'),thumb:i.getAttribute('src'),titolo:f.textContent}});
+  r.querySelectorAll('.mt').forEach((f,k)=>{f.tabIndex=0;f.setAttribute('role','button');const op=()=>openLB(items,k);f.onclick=op;f.onkeydown=e=>{if(e.key==='Enter')op()}})});
 /* ---------- frecce caroselli ---------- */
 document.querySelectorAll('[data-rail]').forEach(b=>b.onclick=()=>{const r=$(b.dataset.rail),c=r.firstElementChild;r.scrollBy({left:(c?c.offsetWidth+18:300)*b.dataset.dir,behavior:reduce?'auto':'smooth'})});
 
