@@ -571,6 +571,15 @@ body::before{background:rgba(11,31,68,.9)}
 .gare{position:relative;overflow:hidden;isolation:isolate}
 .gare-bg{position:absolute;inset:0 0 auto 0;width:100%;height:70%;object-fit:cover;object-position:50% 30%;z-index:-2;opacity:.7}
 .gare::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--sec) 45%,transparent) 0%,var(--sec) 62%)}
+
+.pstaff{margin-top:28px}
+.ps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.ps{background:#FFFFFF;color:#0B1530;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:6px}
+.ps .av{width:48px;height:48px;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;margin-bottom:6px}
+.ps b{font-family:var(--display);font-size:19px;font-weight:600;letter-spacing:-.01em}
+.ps span{color:#4D5F80;font-size:14px;line-height:1.45}
+@media (max-width:960px){.ps-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.ps-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -658,6 +667,15 @@ body::before{background:rgba(11,31,68,.9)}
         <p>Stiamo attivando gruppi di atleti che si allenano al circolo sia al mattino sia al pomeriggio, seguiti da maestri e preparatori, con report periodici sui progressi.</p>
         <div class="pc-slots"><span><b>Mattino</b>classi per atleti</span><span><b>Pomeriggio</b>classi per atleti</span></div>
         <a class="btn" href="https://wa.me/393926218466?text=Ciao%2C%20vorrei%20informazioni%20sulle%20classi%20Vialar%20Performance%20per%20atleti" target="_blank" rel="noopener">Candidati per il gruppo</a>
+      </div>
+    </div>
+    <div class="pstaff rise">
+      <h3 class="h3x" style="color:#fff">Lo staff Performance</h3>
+      <div class="ps-grid">
+        <div class="ps"><div class="av">LV</div><b>Lorenzo Vincente</b><span>Maestro Nazionale FITP · Preparatore fisico di 2° grado</span></div>
+        <div class="ps"><div class="av">FM</div><b>Fabio Meringolo</b><span>Maestro Nazionale FITP</span></div>
+        <div class="ps"><div class="av">MP</div><b>Mario Paura</b><span>Preparatore atletico · Laurea triennale e magistrale in Scienze Motorie · Master in preparazione atletica in Inghilterra e in Spagna</span></div>
+        <div class="ps"><div class="av">GM</div><b>Gianmarco Meringolo</b><span>Preparatore atletico · Laureato in Scienze Motorie · Invictus Trainer · Preparatore fisico di 2° grado FITP</span></div>
       </div>
     </div>
     <div class="pgrid">
