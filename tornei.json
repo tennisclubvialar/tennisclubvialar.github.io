@@ -31,9 +31,9 @@
    "tipo": "Open"
   }
  ],
- "scuola": [
+ "under": [
   {
-   "nome": "Orange Cup · Rodeo A 16",
+   "nome": "Orange Cup",
    "data": "2026-09-27",
    "partecipanti": 13,
    "categoria": "Under 10"
@@ -55,7 +55,9 @@
    "data": "2026-10-18",
    "partecipanti": 11,
    "categoria": "Under 10"
-  },
+  }
+ ],
+ "altri": [
   {
    "nome": "Scrocchia Tutto",
    "data": "2026-10-24",
