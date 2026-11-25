@@ -606,6 +606,30 @@ body::before{background:rgba(11,31,68,.9)}
 .mt figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;color:#fff;font-weight:600;font-size:15px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.7))}
 @media (max-width:860px){.mrow,.mrow.four{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){.mrow,.mrow.two{grid-template-columns:1fr}.mrow.four{grid-template-columns:1fr 1fr}.mt{aspect-ratio:4/4.4}}
+
+/* ===== animazioni ispirate a Rose ===== */
+.nav,.subnav{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+body.nav-up .nav{transform:translateY(-100%)}
+body.nav-up .subnav{transform:translateY(-56px)}
+.stage{padding:0!important;max-width:none!important}
+.frame{border-radius:0;aspect-ratio:16/9;max-height:88vh;width:100%;--g:0px;--r:28px;clip-path:inset(0 var(--g) round var(--r));will-change:clip-path;transform:none!important}
+.frame .wm{left:calc(var(--g) + 22px)!important}
+.frame button{right:calc(var(--g) + 16px)!important;z-index:2}
+.frame::after,.roll::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath d='M50 43v14M43 50h14' stroke='%23fff' stroke-width='1.4'/%3E%3C/svg%3E");background-size:25% 50%;opacity:.55}
+@media (max-width:600px){.frame::after{background-size:50% 50%}.frame .wm{left:calc(var(--g) + 14px)!important}}
+.roll{position:relative;overflow:hidden;padding-block:clamp(90px,14vw,180px)}
+.roll::before{background-size:25% 33.333%;opacity:.18}
+.roll .in{position:relative}
+.roll-k{font-family:var(--display);font-weight:600;font-size:clamp(18px,2vw,24px);line-height:1.35;max-width:30ch;opacity:.85;margin:0 0 clamp(70px,10vw,140px)}
+.roll-h{font-family:var(--display);font-weight:700;font-size:clamp(54px,11vw,150px);line-height:1;letter-spacing:-.04em;margin:0}
+.roll-h>span{display:block}
+.roll-w{position:relative;height:1.12em;overflow:hidden}
+.roll-w b{position:absolute;left:0;top:0;font-weight:inherit;white-space:nowrap;opacity:0;transform:translateY(.55em);transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .45s}
+.roll-w b.on{opacity:1;transform:none}
+.roll-w b.out{opacity:0;transform:translateY(-.55em)}
+.roll-w b:nth-child(odd).on{color:#fff}
+.roll-w b:nth-child(even).on{color:#7DB8FF}
+@media (prefers-reduced-motion:reduce){.nav,.subnav,.roll-w b{transition:none}}
 </style>
 </head>
 <body>
@@ -636,7 +660,7 @@ body::before{background:rgba(11,31,68,.9)}
     <p class="lead">Cinque campi tra pini e basiliche, a 200 metri dal Vaticano. Dove il gioco incontra la storia.</p>
     <div class="ctas"><a class="btn" href="#performance">Scopri Vialar Performance</a><a class="link" href="#bacheca">Guarda la bacheca ›</a></div>
   </div>
-  <div class="stage in"><div class="frame" id="frame">
+  <div class="stage"><div class="frame" id="frame">
     <img class="wm" src="assets/logo-bianco.png" alt="Tennis Club Vialar">
     <video id="heroVideo" src="assets/video/vialar-in-campo.mp4" poster="assets/video/vialar-in-campo.jpg" muted loop playsinline autoplay aria-label="Video: si gioca al Tennis Club Vialar"></video>
     <button id="vbtn" aria-label="Metti in pausa il video"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg></button>
@@ -645,6 +669,10 @@ body::before{background:rgba(11,31,68,.9)}
 
 <section class="statement" aria-label="Chi siamo"><div class="in"><p id="say">Un circolo dedicato solo al tennis. Si gioca, si cresce, ci si diverte: dai più piccoli agli agonisti, fino agli adulti che iniziano oggi.</p></div></section>
 
+<section class="dark roll" aria-label="Vivi il tennis, la scuola, la sfida, il circolo"><div class="in">
+  <p class="roll-k">Il tennis è più di uno sport.<br>È il posto dove si cresce, insieme.</p>
+  <h2 class="roll-h" aria-hidden="true"><span>Vivi</span><span class="roll-w" id="rollW"><b class="on">il tennis.</b><b>la scuola.</b><b>la sfida.</b><b>il circolo.</b></span></h2>
+</div></section>
 <section id="circolo">
   <div class="in">
     <p class="eyebrow rise">Il circolo</p>
@@ -1178,8 +1206,9 @@ document.querySelectorAll('section[id]').forEach(s=>so.observe(s));
 /* ---------- link interni: scorrimento morbido senza cambiare indirizzo (evita i salti all'inizio) ---------- */
 document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href').slice(1);const t=id?document.getElementById(id):null;
   e.preventDefault();nav.classList.remove('open');menu.setAttribute('aria-expanded',false);
-  const off=(document.getElementById('subnav').offsetHeight||0)+(nav.offsetHeight||0)-1;
-  const y=t&&id!=='top'?t.getBoundingClientRect().top+scrollY-off:0;
+  const ty=t&&id!=='top'?t.getBoundingClientRect().top+scrollY:0;const down=ty>scrollY;
+  const off=(document.getElementById('subnav').offsetHeight||0)+(down?0:(nav.offsetHeight||0))-1;
+  const y=ty?ty-off:0;
   scrollTo({top:y,behavior:reduce?'auto':'smooth'})});
 
 /* ---------- frase che si accende + video che si allarga ---------- */
@@ -1188,13 +1217,22 @@ const words=[...say.querySelectorAll('.w')];if(reduce)words.forEach(w=>w.classLi
 const frame=$('frame');
 function onScroll(){if(reduce)return;const vh=innerHeight;
   const r=frame.parentElement.getBoundingClientRect();const p=Math.min(1,Math.max(0,(vh-r.top)/(vh*0.9)));
-  frame.style.transform='scale('+(0.82+0.18*p)+')';frame.style.borderRadius=(28*(1-p)+8)+'px';
+  const w=frame.offsetWidth,g0=Math.max(16,(w-1120)/2,w*.06);frame.style.setProperty('--g',(g0*(1-p)).toFixed(1)+'px');frame.style.setProperty('--r',(28*(1-p)).toFixed(1)+'px');
   const sr=say.getBoundingClientRect();const q=Math.min(1,Math.max(0,(vh*0.85-sr.top)/(sr.height+vh*0.35)));const k=Math.round(q*words.length);words.forEach((w,i)=>w.classList.toggle('on',i<k))}
 let tick=false;addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(()=>{onScroll();tick=false})}},{passive:true});addEventListener('resize',onScroll);onScroll();
 
 /* ---------- numeri che contano ---------- */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const b=e.target,n=+b.dataset.count;io.unobserve(b);if(reduce){if(n>=100)b.textContent=n+'+';return}const t0=performance.now();const f=t=>{const p=Math.min(1,(t-t0)/1000);b.textContent=Math.round(n*(1-Math.pow(1-p,3)))+(n>=100&&p===1?'+':'');if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}),{threshold:.6});
 document.querySelectorAll('[data-count]').forEach(b=>io.observe(b));
+
+/* ---------- barra che si nasconde scendendo e torna salendo ---------- */
+let lastY=scrollY;addEventListener('scroll',()=>{const y=scrollY,d=y-lastY;if(Math.abs(d)<6)return;
+  document.body.classList.toggle('nav-up',d>0&&y>240&&!nav.classList.contains('open'));lastY=y},{passive:true});
+/* ---------- parola che rotola ---------- */
+(()=>{const ws=[...document.querySelectorAll('#rollW b')];if(!ws.length||reduce)return;let k=0;
+  setInterval(()=>{if(document.hidden)return;const a=ws[k];k=(k+1)%ws.length;const b=ws[k];
+    ws.forEach(x=>x.classList.remove('out'));a.classList.remove('on');a.classList.add('out');
+    b.style.transition='none';b.classList.remove('out');b.offsetWidth;b.style.transition='';b.classList.add('on')},2200)})();
 </script>
 
 </body>
